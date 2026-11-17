@@ -25,7 +25,7 @@ $id = filter_var(
 $laporan = false;
 if ($id !== false) {
     $stmt = $pdo->prepare(
-        "SELECT l.id, l.user_id, l.judul, l.lokasi, l.deskripsi, l.status, l.catatan_admin,
+        "SELECT l.id, l.user_id, l.judul, l.lokasi, l.deskripsi, l.status,
                 l.gambar,
                 l.permintaan_volunteer, l.deskripsi_volunteer, l.tanggal_aksi, l.kuota,
                 l.created_at, u.username,
