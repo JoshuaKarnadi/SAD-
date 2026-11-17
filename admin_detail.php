@@ -263,7 +263,7 @@ include 'includes/header.php';
         <?php endif; ?>
     </div>
 
-    <p><a href="admin.php">Kembali ke daftar admin</a> | <a href="detail.php?id=<?= (int) $laporan['id'] ?>">Lihat tampilan publik</a></p>
+    <p><a href="admin.php">Kembali ke daftar admin</a></p>
 <?php endif; ?>
 
 <?php include 'includes/footer.php'; ?>

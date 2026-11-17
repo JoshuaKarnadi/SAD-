@@ -86,6 +86,10 @@ $_SESSION['last_activity'] = time();
 $_SESSION['csrf_token']    = bin2hex(random_bytes(32));
 
 catat_log($pdo, (int) $user['id'], 'LOGIN_SUCCESS', 'Login berhasil');
+if ($user['role'] === 'admin') {
+    header('Location: ../admin.php');
+} else {
+    header('Location: ../index.php');
+}
 
-header('Location: ../index.php');
 exit;

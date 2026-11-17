@@ -20,11 +20,11 @@ if (!is_string($filter) || !in_array($filter, $filter_boleh, true)) {
 $label_filter = [
     'all'           => 'Semua',
     'reported'      => 'Laporan Masalah',
-    'gotong_royong' => 'Gotong Royong',
+    'gotong_royong' => 'Volunteer',
 ];
 $label_status = [
     'reported'      => 'Dilaporkan',
-    'gotong_royong' => 'Gotong Royong',
+    'gotong_royong' => 'Volunteer',
     'done'          => 'Selesai',
 ];
 
@@ -57,7 +57,7 @@ $stmt = $pdo->prepare(
 $stmt->execute([$filter, $filter]);
 $daftar = $stmt->fetchAll();
 
-$judul_halaman = isset($_SESSION['user_id']) ? 'Beranda' : 'Katalog';
+$judul_halaman = isset($_SESSION['user_id']) ? 'Beranda' : 'Beranda';
 include 'includes/header.php';
 ?>
 

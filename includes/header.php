@@ -28,14 +28,20 @@ $judul_halaman = $judul_halaman ?? 'PeduliLingkungan';
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body<?= !empty($halaman_admin) ? ' class="halaman-admin"' : '' ?>>
+
 <nav class="navbar">
     <?php if ($sudah_login): ?>
-        <a href="index.php">Beranda</a>
-        <a href="laporan_saya.php">Laporan Saya</a>
-        <a href="kegiatan_saya.php">Kegiatan Saya</a>
+
+        <?php if (!$adalah_admin): ?>
+            <a href="index.php">Beranda</a>
+            <a href="laporan_saya.php">Laporan Saya</a>
+            <a href="kegiatan_saya.php">Kegiatan Saya</a>
+        <?php endif; ?>
+
         <?php if ($adalah_admin): ?>
             <a href="admin.php">Admin</a>
         <?php endif; ?>
+
         <span><?= htmlspecialchars($_SESSION['username'] ?? '', ENT_QUOTES, 'UTF-8') ?></span>
         <form action="actions/logout.php" method="post">
             <input type="hidden" name="csrf_token"
@@ -43,7 +49,7 @@ $judul_halaman = $judul_halaman ?? 'PeduliLingkungan';
             <button type="submit" class="btn-danger">Logout</button>
         </form>
     <?php else: ?>
-        <a href="index.php">Katalog</a>
+        <a href="index.php">Beranda</a>
         <a href="login.php">Login</a>
     <?php endif; ?>
 </nav>

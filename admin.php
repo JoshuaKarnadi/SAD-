@@ -143,7 +143,7 @@ include 'includes/header.php';
             <?php foreach ($daftar as $r): ?>
                 <tr>
                     <td>
-                        <a href="detail.php?id=<?= (int) $r['id'] ?>"><?= htmlspecialchars($r['judul'], ENT_QUOTES, 'UTF-8') ?></a><br>
+                        <a href="admin_detail.php?id=<?= (int) $r['id'] ?>"><?= htmlspecialchars($r['judul'], ENT_QUOTES, 'UTF-8') ?></a><br>
                         oleh <?= htmlspecialchars($r['username'], ENT_QUOTES, 'UTF-8') ?>
                     </td>
                     <td>
