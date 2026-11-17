@@ -1,0 +1,98 @@
+/* assets/css/style.css */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f5;
+    color: #1f2d27;
+    line-height: 1.5;
+}
+
+a { color: #1f7a4d; }
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    background: #1f7a4d;
+}
+.navbar a { color: #fff; text-decoration: none; font-weight: bold; }
+.navbar span { margin-left: auto; color: #fff; }
+.navbar form { margin: 0; }
+
+.container-utama { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+
+.card-box {
+    background: #fff;
+    border: 1px solid #dfe7e2;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.btn-primary, .btn-danger {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-primary { background: #1f7a4d; }
+.btn-primary:hover { background: #18613e; }
+.btn-danger { background: #c0392b; }
+.btn-danger:hover { background: #992d22; }
+
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; margin-bottom: 4px; font-weight: bold; }
+.form-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #b9c7bf;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.table-data { width: 100%; border-collapse: collapse; background: #fff; }
+.table-data th, .table-data td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #dfe7e2;
+    text-align: left;
+}
+.table-data th { background: #e8f0eb; }
+
+.alert-error, .alert-success { padding: 10px 14px; border-radius: 6px; margin-bottom: 14px; }
+.alert-error   { background: #fdecea; color: #8a1f17; border: 1px solid #f5c2bd; }
+.alert-success { background: #e6f4ea; color: #1e5e32; border: 1px solid #b7dfc2; }
+
+.badge-status {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #e0e0e0;
+    color: #333;
+}
+.badge-status[data-status="reported"]      { background: #fff3cd; color: #7a5b00; }
+.badge-status[data-status="gotong_royong"] { background: #d6ecff; color: #0b4f8a; }
+.badge-status[data-status="done"]          { background: #d4edda; color: #1e5e32; }
+
+/* Tampilan khusus area admin */
+.halaman-admin { background: #eceef5; }
+.halaman-admin .navbar { background: #2b2d42; }
+.halaman-admin .card-box { border-left: 6px solid #2b2d42; }
+.halaman-admin .table-data th { background: #2b2d42; color: #fff; }
+
+.admin-banner {
+    background: #f4b942;
+    color: #2b2d42;
+    padding: 6px 24px;
+    font-size: 13px;
+    font-weight: bold;
+}
