@@ -4,8 +4,8 @@
 $db_host = 'localhost';
 $db_port = '5432';
 $db_name = 'db_pedulilingkungan';
-$db_user = 'postgres';
-$db_pass = 'melisa';
+$db_user = 'app_pedulilingkungan';
+$db_pass = 'admin';
 
 try {
     $dsn = "pgsql:host=$db_host;port=$db_port;dbname=$db_name";
