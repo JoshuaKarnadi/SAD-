@@ -57,7 +57,7 @@ $stmt = $pdo->prepare(
 $stmt->execute([$filter, $filter]);
 $daftar = $stmt->fetchAll();
 
-$judul_halaman = isset($_SESSION['user_id']) ? 'Beranda' : 'Beranda';
+$judul_halaman = isset($_SESSION['user_id']) ? 'Beranda' : 'Beranda Tamu';
 include_once 'includes/header.php';
 ?>
 
