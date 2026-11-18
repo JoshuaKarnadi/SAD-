@@ -73,7 +73,7 @@ include 'includes/header.php';
     <?php if ($sudah_login): ?>
         <a href="lapor.php" class="btn-primary">Buat Laporan</a>
     <?php else: ?>
-        <p><a href="login.php">Masuk</a> untuk membuat laporan atau mendaftar sebagai volunteer.</p>
+        <p><a href="login.php" class="btn-primary">Masuk</a> untuk membuat laporan atau mendaftar sebagai volunteer.</p>
     <?php endif; ?>
 </div>
 
@@ -96,7 +96,7 @@ include 'includes/header.php';
 <?php endif; ?>
 
 <div class="card-box">
-    <p>
+    <p class="filter-bar">
         <?php foreach ($label_filter as $kunci => $teks): ?>
             <?php if ($kunci === $filter): ?>
                 <a href="index.php?filter=<?= htmlspecialchars($kunci, ENT_QUOTES, 'UTF-8') ?>" class="btn-primary"><?= htmlspecialchars($teks, ENT_QUOTES, 'UTF-8') ?></a>

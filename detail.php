@@ -87,7 +87,7 @@ include 'includes/header.php';
 <?php if ($laporan === false): ?>
     <div class="card-box">
         <h2>Laporan tidak ditemukan</h2>
-        <p><a href="index.php">Kembali ke daftar</a></p>
+        <p class="btn-back"><a href="index.php">Kembali ke daftar</a></p>
     </div>
 
 <?php else: ?>
@@ -165,7 +165,7 @@ include 'includes/header.php';
         <div class="card-box"><p>Kegiatan ini sudah selesai.</p></div>
     <?php endif; ?>
 
-    <p><a href="index.php">Kembali ke daftar</a></p>
+    <p class="btn-back"><a href="index.php">Kembali ke daftar</a></p>
 <?php endif; ?>
 
 <?php include 'includes/footer.php'; ?>

@@ -122,7 +122,7 @@ include 'includes/header.php';
 <div class="card-box">
     <h2>Admin: Kelola Laporan</h2>
     <p>Pengajuan volunteer yang menunggu: <strong><?= $jumlah_menunggu ?></strong></p>
-    <p>
+    <p class="filter-bar">
         <?php foreach ($label_filter as $kunci => $teks): ?>
             <?php if ($kunci === $filter): ?>
                 <a href="admin.php?filter=<?= htmlspecialchars($kunci, ENT_QUOTES, 'UTF-8') ?>" class="btn-primary"><?= htmlspecialchars($teks, ENT_QUOTES, 'UTF-8') ?></a>

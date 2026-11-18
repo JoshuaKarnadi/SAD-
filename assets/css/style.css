@@ -1,415 +1,337 @@
-/* assets/css/style.css */
+/* ==========================================================
+   PeduliLingkungan - style.css (perombakan tampilan)
+   Hanya CSS. Nama class lama tetap dipakai, jadi HTML/PHP tidak berubah.
+   ========================================================== */
 
-/* =========================================
-   1. DESIGN TOKENS (CSS VARIABLES)
-   ========================================= */
 :root {
-    /* Warna Utama (Tema Warga / Default) */
+    --bg: #f2f6f3;
+    --surface: #ffffff;
+    --text: #1b2a22;
+    --muted: #5b6e64;
+    --border: #dbe5df;
+
     --primary: #1f7a4d;
-    --primary-hover: #175e3b;
-    --primary-light: #e8f3ed;
-    --primary-ring: rgba(31, 122, 77, 0.16);
+    --primary-dark: #165c3a;
+    --primary-soft: #e3f3ea;
 
-    /* Warna Latar & Permukaan */
-    --bg-body: #f4f7f5;
-    --bg-surface: #ffffff;
-    --bg-subtle: #f8faf9;
+    --danger: #c0392b;
+    --danger-dark: #992d22;
 
-    /* Warna Teks */
-    --text-main: #1b2822;
-    --text-muted: #5a6d64;
-    --text-inverse: #ffffff;
-
-    /* Garis & Bayangan */
-    --border-color: #dce5e0;
-    --shadow-sm: 0 1px 3px rgba(27, 40, 34, 0.05);
-    --shadow-md: 0 4px 14px rgba(27, 40, 34, 0.06);
-    --radius-sm: 8px;
-    --radius-md: 12px;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(18, 44, 32, .06), 0 6px 20px rgba(18, 44, 32, .06);
 }
 
-/* Override Variabel Khusus Halaman Admin */
-.halaman-admin {
-    --primary: #2b2d42;
-    --primary-hover: #1d1f2e;
-    --primary-light: #eceef5;
-    --primary-ring: rgba(43, 45, 66, 0.16);
-    --bg-body: #eef0f7;
-    --border-color: #d6dae6;
-}
-
-/* =========================================
-   2. RESET & BASE TYPOGRAPHY
-   ========================================= */
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-body);
-    color: var(--text-main);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 16px;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    color: var(--text);
+    background: var(--bg);
 }
 
-h1, h2, h3, h4 {
-    margin-top: 0;
-    color: var(--text-main);
-    letter-spacing: -0.015em;
-}
+h2, h3 { line-height: 1.25; margin: 0 0 .75rem; }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.15rem; }
+p  { margin: 0 0 .85rem; }
+strong { font-weight: 650; }
+a { color: var(--primary); }
+a:hover { color: var(--primary-dark); }
+hr { border: 0; border-top: 1px solid var(--border); margin: 1.25rem 0; }
 
-a {
-    color: var(--primary);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
+button, input, select, textarea { font: inherit; }
 
-a:hover {
-    color: var(--primary-hover);
-}
-
-/* =========================================
-   3. NAVBAR & ADMIN BANNER
-   ========================================= */
-.admin-banner {
-    background: linear-gradient(90deg, #f4b942, #f7c763);
-    color: #2b2d42;
-    padding: 8px 24px;
-    font-size: 13px;
-    font-weight: 700;
-    text-align: center;
-    letter-spacing: 0.3px;
-    border-bottom: 1px solid rgba(43, 45, 66, 0.12);
-}
-
+/* ---------- Navbar ---------- */
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 24px;
-    background-color: var(--primary);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 6px 8px;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #b25454, #cc6861);
+    box-shadow: 0 2px 10px rgba(18, 44, 32, .18);
 }
-
 .navbar a {
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
+    text-decoration: none;
     font-weight: 600;
-    font-size: 14px;
-    padding: 7px 14px;
-    border-radius: var(--radius-sm);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: .45rem .9rem;
+    border-radius: 999px;
+    transition: background-color .15s;
 }
-
-.navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.16);
-    color: #ffffff;
-}
-
+.navbar a:hover { background: rgba(255, 255, 255, .2); color: #fff; }
 .navbar span {
     margin-left: auto;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 14px;
-    font-weight: 500;
-    padding-right: 6px;
+    padding: .3rem .85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .18);
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 600;
 }
+.navbar form { margin: 0; }
+.navbar a + form { margin-left: auto; }
+.navbar .btn-danger { padding: .42rem .95rem; font-size: .85rem; margin: 0; }
 
-.navbar form {
-    margin: 0;
-}
-
-/* =========================================
-   4. CONTAINER & CARD
-   ========================================= */
+/* ---------- Wadah dan kartu ---------- */
 .container-utama {
-    max-width: 980px;
-    margin: 32px auto;
+    max-width: 1040px;
+    margin: 28px auto 48px;
     padding: 0 20px;
 }
 
 .card-box {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 24px 28px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-md);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    overflow-x: auto;
+}
+.card-box > :last-child { margin-bottom: 0; }
+.card-box img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: .5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
 }
 
-.halaman-admin .card-box {
-    border-left: 5px solid var(--primary);
-}
-
-/* =========================================
-   5. BUTTONS & FILTER GROUP
-   ========================================= */
-.btn-primary,
-.btn-danger,
-.btn-outline {
+/* ---------- Tombol ---------- */
+.btn-primary, .btn-danger {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 9px 18px;
+    gap: .4rem;
+    margin: .15rem .4rem .15rem 0;
+    padding: .62rem 1.2rem;
+    border: 1px solid transparent;
     border-radius: var(--radius-sm);
-    font-size: 14px;
+    font-size: .92rem;
     font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
+    line-height: 1.2;
+    color: #fff;
     text-decoration: none;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    transition: background-color .15s, transform .1s, box-shadow .15s;
 }
+.btn-primary:last-child, .btn-danger:last-child { margin-right: 0; }
 
-/* Primary Button */
-.btn-primary {
-    background-color: var(--primary);
-    color: var(--text-inverse);
-    border: 1px solid transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
+.btn-primary { background: var(--primary); box-shadow: 0 1px 2px rgba(31, 122, 77, .35); }
 .btn-primary:hover {
-    background-color: var(--primary-hover);
-    color: var(--text-inverse);
+    background: var(--primary-dark);
+    color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 4px 10px var(--primary-ring);
+    box-shadow: 0 5px 12px rgba(31, 122, 77, .3);
 }
 
-/* Danger Button */
-.btn-danger {
-    background-color: #c0392b;
-    color: var(--text-inverse);
-    border: 1px solid transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
+.btn-danger { background: var(--danger); box-shadow: 0 1px 2px rgba(192, 57, 43, .35); }
 .btn-danger:hover {
-    background-color: #a52f23;
-    color: var(--text-inverse);
+    background: var(--danger-dark);
+    color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.22);
+    box-shadow: 0 5px 12px rgba(192, 57, 43, .3);
 }
 
-/* Outline Button */
-.btn-outline {
-    background-color: var(--bg-surface);
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
+.btn-primary:active, .btn-danger:active { transform: translateY(0); box-shadow: none; }
+.btn-primary:focus-visible, .btn-danger:focus-visible {
+    outline: 3px solid rgba(31, 122, 77, .35);
+    outline-offset: 2px;
 }
+.btn-primary:disabled, .btn-danger:disabled { opacity: .55; cursor: not-allowed; transform: none; }
 
-.btn-outline:hover {
-    background-color: var(--primary-light);
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.btn-primary:active,
-.btn-danger:active,
-.btn-outline:active {
-    transform: translateY(0);
-}
-
-/* Filter Group */
-.filter-group {
-    display: flex;
-    flex-wrap: wrap;
+.btn-back {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin: 18px 0;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.filter-group .btn-primary,
-.filter-group .btn-outline {
-    padding: 7px 14px;
-    font-size: 13px;
-    border-radius: 999px; /* Gaya pill agar terasa seperti filter modern */
+.btn-back:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+    color: #111827;
 }
 
-/* =========================================
-   6. FORM INPUTS
-   ========================================= */
-.form-group {
-    margin-bottom: 18px;
-}
-
+/* ---------- Formulir ---------- */
+.form-group { margin-bottom: 1.1rem; }
 .form-group label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: .35rem;
     font-weight: 600;
-    font-size: 14px;
-    color: var(--text-main);
+    font-size: .93rem;
 }
 
 .form-input {
     width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--border-color);
+    padding: .65rem .85rem;
+    border: 1px solid #b7c7be;
     border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-family: inherit;
-    color: var(--text-main);
-    background-color: var(--bg-subtle);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    background: #fff;
+    color: var(--text);
+    transition: border-color .15s, box-shadow .15s;
 }
-
-.form-input::placeholder {
-    color: #93a39b;
-}
-
 .form-input:focus {
     outline: none;
-    background-color: var(--bg-surface);
     border-color: var(--primary);
-    box-shadow: 0 0 0 3.5px var(--primary-ring);
+    box-shadow: 0 0 0 3px rgba(31, 122, 77, .18);
+}
+textarea.form-input { min-height: 7rem; resize: vertical; }
+
+.form-input[type="file"] { padding: .5rem; background: #fafcfb; }
+.form-input[type="file"]::file-selector-button {
+    margin-right: .8rem;
+    padding: .45rem .95rem;
+    border: 0;
+    border-radius: 8px;
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+    font-weight: 600;
+    cursor: pointer;
 }
 
-textarea.form-input {
-    min-height: 100px;
-    resize: vertical;
+input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: .5rem;
+    vertical-align: -.2rem;
+    accent-color: var(--primary);
 }
 
-/* =========================================
-   7. TABLE DATA
-   ========================================= */
+/* ---------- Tabel ---------- */
 .table-data {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background-color: var(--bg-surface);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: .93rem;
 }
-
-.table-data th,
-.table-data td {
-    padding: 13px 16px;
-    border-bottom: 1px solid var(--border-color);
-    text-align: left;
-    font-size: 14px;
-    vertical-align: middle;
-}
-
 .table-data th {
-    background-color: var(--primary-light);
+    padding: .7rem .9rem;
+    text-align: left;
+    font-size: .74rem;
     font-weight: 700;
-    font-size: 13px;
+    letter-spacing: .05em;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    color: var(--primary);
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+    white-space: nowrap;
 }
-
-.halaman-admin .table-data th {
-    background-color: var(--primary);
-    color: var(--text-inverse);
+.table-data td {
+    padding: .85rem .9rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
 }
+.table-data tr:last-child td { border-bottom: 0; }
+.table-data tr:hover td { background: #f6faf7; }
 
-.table-data tbody tr {
-    transition: background-color 0.15s ease;
-}
-
-.table-data tbody tr:hover {
-    background-color: var(--bg-subtle);
-}
-
-.table-data tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* =========================================
-   8. ALERTS & STATUS BADGES
-   ========================================= */
-.alert-error,
-.alert-success {
-    padding: 14px 18px;
+/* ---------- Pesan ---------- */
+.alert-error, .alert-success {
+    padding: .8rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid;
+    border-left-width: 5px;
     border-radius: var(--radius-sm);
-    margin-bottom: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: .95rem;
 }
+.alert-error   { background: #fdecea; color: #8a1f17; border-color: #f2b8b2; }
+.alert-success { background: #e5f5ea; color: #1b5a2f; border-color: #a9dbb9; }
 
-.alert-error {
-    background-color: #fdf2f2;
-    color: #8a1f17;
-    border: 1px solid #f5c2bd;
-    border-left: 4px solid #c0392b;
-}
-
-.alert-success {
-    background-color: #edf8f1;
-    color: #185735;
-    border: 1px solid #bce2cb;
-    border-left: 4px solid #1f7a4d;
-}
-
+/* ---------- Lencana status ---------- */
 .badge-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
+    display: inline-block;
+    padding: .2rem .75rem;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    background: #e5e9e7;
+    color: #3b4a43;
+}
+.badge-status[data-status="reported"]      { background: #fff1c9; color: #7a5700; }
+.badge-status[data-status="gotong_royong"] { background: #d8ecff; color: #0b4f8a; }
+.badge-status[data-status="done"]          { background: #d5f0dd; color: #1c5a30; }
+
+/* ---------- Bilah filter (opsional, aktif jika HTML memakai class ini) ---------- */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+.filter-bar a {
+    padding: .4rem .95rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text);
+    text-decoration: none;
+    font-size: .88rem;
     font-weight: 600;
-    letter-spacing: 0.2px;
-    background-color: #e5e7eb;
-    color: #374151;
+}
+.filter-bar a:hover { border-color: var(--primary); color: var(--primary-dark); }
+.filter-bar a.btn-primary {
+    margin: 0;
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: none;
+    transform: none;
+}
+.filter-bar a.btn-primary:hover { background: var(--primary-dark); color: #fff; }
+
+/* ---------- Area admin (tampilan berbeda) ---------- */
+.halaman-admin { background: #eceef6; }
+.halaman-admin .navbar { background: linear-gradient(135deg, #25274d, #3b3f78); }
+.halaman-admin .card-box { border-left: 5px solid #3b3f78; }
+.halaman-admin .table-data th { background: #2b2d52; color: #fff; }
+.halaman-admin .table-data tr:hover td { background: #f3f4fb; }
+.halaman-admin .btn-primary { background: #3b3f78; box-shadow: 0 1px 2px rgba(59, 63, 120, .4); }
+.halaman-admin .btn-primary:hover { background: #2b2d52; box-shadow: 0 5px 12px rgba(59, 63, 120, .3); }
+.halaman-admin .form-input:focus {
+    border-color: #3b3f78;
+    box-shadow: 0 0 0 3px rgba(59, 63, 120, .18);
+}
+.halaman-admin .filter-bar a.btn-primary { background: #3b3f78; border-color: #3b3f78; }
+.halaman-admin .filter-bar a:hover { border-color: #3b3f78; color: #2b2d52; }
+
+.admin-banner {
+    padding: .4rem 24px;
+    background: #f4b942;
+    color: #2b2d42;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
 }
 
-/* Titik indikator kecil di dalam badge */
-.badge-status::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: currentColor;
-}
-
-.badge-status[data-status="reported"] {
-    background-color: #fef3c7;
-    color: #92400e;
-}
-
-.badge-status[data-status="gotong_royong"] {
-    background-color: #dbeafe;
-    color: #1e40af;
-}
-
-.badge-status[data-status="done"] {
-    background-color: #d1fae5;
-    color: #065f46;
-}
-
-/* =========================================
-   9. RESPONSIVE (LAYAR MOBILE)
-   ========================================= */
+/* ---------- Layar kecil ---------- */
 @media (max-width: 640px) {
-    .navbar {
-        padding: 12px 16px;
-    }
+    .navbar { padding: 8px 12px; }
+    .container-utama { margin-top: 16px; padding: 0 12px; }
+    .card-box { padding: 1rem; }
+    .table-data { font-size: .85rem; }
+    h2 { font-size: 1.3rem; }
+}
 
-    .navbar span {
-        width: 100%;
-        margin-left: 0;
-        padding-top: 6px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .card-box {
-        padding: 18px 16px;
-    }
-
-    .table-data {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+/* ---------- Hormati preferensi gerakan minimal ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .btn-primary:hover, .btn-danger:hover { transform: none; }
 }

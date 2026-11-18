@@ -263,7 +263,7 @@ include 'includes/header.php';
         <?php endif; ?>
     </div>
 
-    <p><a href="admin.php">Kembali ke daftar admin</a></p>
+    <p class="btn-back"><a href="admin.php">Kembali ke daftar admin</a></p>
 <?php endif; ?>
 
 <?php include 'includes/footer.php'; ?>
